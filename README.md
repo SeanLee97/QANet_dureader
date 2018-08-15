@@ -1,6 +1,6 @@
 # QANet_dureader
 
-本人曾随队在[mrc2018机器阅读理解比赛](http://mrc2018.cipsc.org.cn/)中获得TOP 11的名次，当时使用的是[BIDAF](https://arxiv.org/abs/1611.01603)，现尝试使用[QANet](https://arxiv.org/abs/1804.09541)去尝试dureader数据集
+本人曾随队在[mrc2018机器阅读理解比赛](http://mrc2018.cipsc.org.cn/)中获得`TOP11`的名次，当时使用的是[BIDAF](https://arxiv.org/abs/1611.01603)，现尝试使用[QANet](https://arxiv.org/abs/1804.09541)去尝试dureader数据集
 
 ## 说说QANet
 - **全卷积操作**： 包括encoder layer, fully-connected layer都是采用全卷积结构
@@ -11,13 +11,7 @@
 ### 小小改进
 加入原始位置信息(position embedding)在decoder层做Attention计算，至于效果嘛，大家对比测试便知:>
 
-$$W = similarity(K, Q) \\\\
-\alpha = softmax(W) \\\\
-V_{\alpha} = \alpha \cdot V \\\\
-V_{T} = [V, V_{\alpha} ] \\\\
-
-where, \\\\
-K = position\_embedding, Q = V$$
+![equation](./images/equation.gif)
 
 ## 模型
 
