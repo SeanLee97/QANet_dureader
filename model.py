@@ -377,7 +377,8 @@ class Model(object):
                                 #initializer=tf.keras.initializers.lecun_normal(),
                                 dtype=tf.float32)
             V = tf.get_variable(name="attn_V", shape=[2*self.config.hidden_size, 1],
-                                initializer=tf.truncated_normal_initializer(),
+                                initializer=tf.contrib.layers.xavier_initializer(),
+                                #initializer=tf.truncated_normal_initializer(),
                                 #initializer=tf.keras.initializers.lecun_normal(),
                                 dtype=tf.float32)
             U = tf.get_variable(name="attn_U",
