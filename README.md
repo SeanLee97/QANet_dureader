@@ -11,7 +11,7 @@
 ### 小小改进
 加入原始位置信息(position embedding)在decoder层做Attention计算，至于效果嘛，大家对比测试便知:>
 
-<center>![equation](./images/equation.png)</center>
+<div align=center>![equation](./images/equation.png)
 
 ## 模型
 
