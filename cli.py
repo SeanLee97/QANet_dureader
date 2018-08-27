@@ -214,7 +214,7 @@ def evaluate(args):
 
     logger.info('Restoring the model...')
     model = Model(vocab, args)
-    model.restore(model_dir=args.model_dir)
+    model.restore(model_dir=args.model_dir, args.algo)
     logger.info('Evaluating the model on dev set...')
     dev_batches = dataloader.next_batch('dev', args.batch_size,
                                             pad_id=vocab.get_word_id(vocab.pad_token), shuffle=False)
@@ -246,7 +246,7 @@ def predict(args):
     logger.info('Restoring the model...')
 
     model = Model(vocab, args)
-    model.restore(model_dir=args.model_dir)
+    model.restore(model_dir=args.model_dir, args.algo)
     logger.info('Predicting answers for test set...')
     test_batches = dataloader.next_batch('test', args.batch_size,
                                              pad_id=vocab.get_word_id(vocab.pad_token), shuffle=False)
