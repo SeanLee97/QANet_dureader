@@ -216,8 +216,7 @@ def evaluate(args):
     model = Model(vocab, args)
     model.restore(args.model_dir, args.algo)
     logger.info('Evaluating the model on dev set...')
-    dev_batches = dataloader.next_batch('dev', args.batch_size,
-                                            pad_id=vocab.get_word_id(vocab.pad_token), shuffle=False)
+    dev_batches = dataloader.next_batch('dev', args.batch_size, vocab.get_word_id(vocab.pad_token), vocab.get_char_id(vocab.pad_token), shuffle=False)
 
     dev_loss, dev_bleu_rouge = model.evaluate(
         dev_batches, result_dir=args.result_dir, result_prefix='dev.predicted')
@@ -248,8 +247,7 @@ def predict(args):
     model = Model(vocab, args)
     model.restore(args.model_dir, args.algo)
     logger.info('Predicting answers for test set...')
-    test_batches = dataloader.next_batch('test', args.batch_size,
-                                             pad_id=vocab.get_word_id(vocab.pad_token), shuffle=False)
+    test_batches = dataloader.next_batch('test', args.batch_size, vocab.get_word_id(vocab.pad_token), vocab.get_char_id(vocab.pad_token), shuffle=False)
 
     model.evaluate(test_batches,
                       result_dir=args.result_dir, result_prefix='test.predicted')
