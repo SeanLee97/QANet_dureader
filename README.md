@@ -2,14 +2,13 @@
 
 本人曾随队在[mrc2018机器阅读理解比赛](http://mrc2018.cipsc.org.cn/)中获得`TOP11`的名次，当时使用的是[BIDAF](https://arxiv.org/abs/1611.01603)，现尝试使用[QANet](https://arxiv.org/abs/1804.09541)去尝试dureader数据集
 
-## 说说QANet
-- **全卷积操作**： 包括encoder layer, fully-connected layer都是采用全卷积结构
+## QANet
 - **残差块**: 使用了残差网络来加深网络深度
 - **自注意**: Google采用了自家的[multihead attention](https://arxiv.org/abs/1706.03762) 来计算`self attention`
-- **强化位置信息**： 正因为卷积网络捕获不到位置信息，所以QANet强化了这点，在每个卷积块中都加入了时间序列信息，可查看`layers / residual_block / add_timing_signal_ld`
+- **强化位置信息**： QANet强化了位置信息，在每个卷积块中都加入了时间序列信息，可查看`layers / residual_block / add_timing_signal_ld`
 
 ### 小小改进
-加入原始位置信息(position embedding)在decoder层做Attention计算，至于效果嘛，大家对比测试便知:>
+加入原始位置信息(position embedding)在decoder层做Attention计算
 
 <div align=center><image src='./images/equation.png' alt=''/></div>
 
