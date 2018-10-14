@@ -7,14 +7,14 @@ import numpy as np
 from collections import Counter
 import jieba
 
-def word_tokenize(sent, cut_api=jieba):
+def word_tokenize(sent):
     if isinstance(sent, list):
         # tokens = "".join(sent)
         # tokens = list(cut_api.cut(sent))
         tokens = sent
         return [token for token in tokens if len(token) >= 1]
     else:
-        tokens = list(cut_api.cut(sent))
+        tokens = jieba.lcut(sent))
         return [token for token in tokens if len(token) >= 1]
 
 
