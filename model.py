@@ -397,7 +397,7 @@ class Model(object):
                     tf.matmul(self.position_emb, W), 
                     tf.matmul(output, U)))
             alpha = tf.nn.softmax(
-                        tf.reshape(tf.matmul(atten_hidden, V), [-1, shape[1], 1]))
+                        tf.reshape(tf.matmul(atten_hidden, V), [-1, shape[1], 1]), axis=1)
             output = tf.reshape(output, [-1, shape[1], 2*self.config.hidden_size])
             C = tf.multiply(alpha, output)
             return tf.concat([output, C], axis=-1)
